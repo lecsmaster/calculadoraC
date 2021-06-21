@@ -42,11 +42,26 @@ float Raiz(float a)
 	return calculo;
 }
 
+float Seno(float a)
+{
+	calculo= sin(a);
+	return calculo;
+}
+float Coseno(float a)
+{
+	calculo= cos(a);
+	return calculo;
+}
+float Tangente(float a)
+{
+	calculo= tan(a);
+	return calculo;
+}
 
 
 void ImprimirResultados()
 {
-	printf("\n Resultado: %.1f \n",calculo);
+	printf("\n Resultado: %.2f \n",calculo);
 }
 
 void GuardarDatos(float resul, int posicion, int opercion)
@@ -84,6 +99,15 @@ void ImprimirCalculosHistoricos(int posiciones)
 				break;
 			case 6:
 				printf("Los resultados Historicos son: %.1f Raiz \n",Resultados[i]);
+			break;
+			case 7:
+				printf("Los resultados Historicos son: %.2f Seno en Radianes\n",Resultados[i]);
+			break;
+			case 8:
+				printf("Los resultados Historicos son: %.2f Coseno en Radianes\n",Resultados[i]);
+			break;
+			case 9:
+				printf("Los resultados Historicos son: %.2f Tangente en Radianes\n",Resultados[i]);
 			break;
 					
     		
@@ -139,7 +163,7 @@ void IngresoDatos(int opc,int posicion, int cuenta)
 		}
 		else
 		{
-			if(opc!=6)
+			if(opc!=6 && opc!=7 && opc!=8 && opc!=9)
 			{				
 				printf("Ingresar numero 2 \n");
 				scanf("%f", &numero2);
@@ -167,7 +191,7 @@ void IngresoDatos(int opc,int posicion, int cuenta)
 			
 			printf("Ingresar numero 1 \n");
 			scanf("%f", &numero1);
-			if (opc!=6)
+			if (opc!=6 && opc!=7 && opc!=8 && opc!=9)
 			{
 				printf("Ingresar numero 2 \n");
 				scanf("%f", &numero2);				
@@ -186,7 +210,10 @@ void bienvenido()
         printf("\n   4. Dividir dos numeros." );
         printf("\n   5. Potencia");
         printf("\n   6. Raiz de un numero." );
-        printf("\n   7. Salir.\n" );      			
+        printf("\n   7. Seno de un numero." );
+        printf("\n   8. Coseno de un numero." );
+        printf("\n   9. Tangente de un numero." );
+        printf("\n   0. Salir.\n" );      			
 }
 
 
@@ -248,9 +275,35 @@ int main() {
     		    GuardarDatos(Raiz(numero1),posicion, opcion);
     		    ImprimirResultados();
     		    posicion=posicion+1;
+    		    break;  
+    	case 7:
+    			IngresoDatos(opcion,posicion, cuenta);
+    		    cuenta=cuenta+1;
+    		
+    		    GuardarDatos(Seno(numero1),posicion, opcion);
+    		    ImprimirResultados();
+    		    posicion=posicion+1;
+    		    break;  
+    	case 8:
+    			IngresoDatos(opcion,posicion, cuenta);
+    		    cuenta=cuenta+1;
+    		
+    		    GuardarDatos(Coseno(numero1),posicion, opcion);
+    		    ImprimirResultados();
+    		    posicion=posicion+1;
     		    break;  	
     	
-    	case 7:
+    	case 9:
+    			IngresoDatos(opcion,posicion, cuenta);
+    		    cuenta=cuenta+1;
+    		
+    		    GuardarDatos(Tangente(numero1),posicion, opcion);
+    		    ImprimirResultados();
+    		    posicion=posicion+1;
+    		    break;  	
+    		
+    	
+    	case 0:
     		ImprimirCalculosHistoricos(posicion);
     	break;    	
     		
@@ -261,7 +314,7 @@ int main() {
 		    		
 	}
    }
-   while(opcion!=7);
+   while(opcion!=0);
     
     
 	
